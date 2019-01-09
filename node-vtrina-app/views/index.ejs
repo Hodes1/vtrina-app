@@ -1,0 +1,35 @@
+<% include partials/header.ejs %>
+    <div class="table-wrapper">
+        <% if (produtos.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome do produto</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Estoque</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% produtos.forEach((produto, index) => { %>
+                        <tr>
+                            <th scope="row"><%= produto.id %></th>
+                            <td><%= produto.nome %></td>
+                            <td>R$ <%= produto.preco %></td>
+                            <td><%= produto.estoque %></td>
+                            <td>
+                                <a href="/edit/<%= produto.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Editar</a>
+                                <a href="/delete/<%= produto.id %>" class="btn btn-sm btn-danger">Deletar</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">Nenhum produto cadastrado. <a href="/add" >Clique aqui</a> para cadastrar um produto.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

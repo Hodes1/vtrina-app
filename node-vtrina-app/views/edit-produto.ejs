@@ -1,0 +1,31 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (produto) { %>
+        <form class="add-produto-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="nome">Nome do Produto</label>
+                    <input type="text" class="form-control" name="nome" id="nome" value="<%= produto.nome %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="preco">Preço</label>
+                    <input type="number" step="0.01" min ="0" class="form-control" name="preco" id="preco" placeholder="Preço" value="<%= produto.preco %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="estoque">Estoque</label>
+                    <input type="number" class="form-control" name="estoque" id="estoque" placeholder="Estoque" value="<%= produto.estoque %>" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Modificar produto</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">Produto não encontrado. <a href="/add">Clique aqui</a> para cadastrar um produto.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
